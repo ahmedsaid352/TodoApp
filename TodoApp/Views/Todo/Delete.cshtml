@@ -1,0 +1,27 @@
+﻿@model Todo
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<form method="post">
+    <div class="border p-3 mt-3">
+        <div class="row pb-2 ">
+            <h2 class="text-primary">Delete</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="IsCompleted"  ></label>
+            <input asp-for="IsCompleted" disabled class="form-control" type="checkbox" />
+        </div>
+        <button class="btn btn-primary" type="submit">Delete</button>
+        <a asp-action="Index" asp-controller="Todo" class="btn btn-secondary">
+            Back to Items
+        </a>
+    </div>
+
+</form>
+

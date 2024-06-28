@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Todo>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    @if(TempData["success"] != null)
+    {
+        <h3 style="color:#333";>
+            @TempData["success"] 
+        </h3>
+    }
+    <div class="row pt-4">
+        <div class="col-6"><h2 class="text-primary">ToDo List</h2></div>
+        <div class="col-6 text-end">
+            <a asp-action="New" asp-controller="Todo" class="btn btn-primary">Add Task</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Is Complete</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.IsCompleted</td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Todo" asp-route-Id="@item.Id" class="btn btn-success">Edit</a>
+                        <a asp-action="Delete" asp-controller="Todo" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>
+

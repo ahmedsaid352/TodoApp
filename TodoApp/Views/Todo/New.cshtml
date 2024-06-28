@@ -1,0 +1,35 @@
+﻿@model Todo
+@{
+    ViewData["Title"] = "New";
+}
+
+<form method="post">
+    <div class="border p-3 mt-3">
+        <div class="row pb-2 ">
+            <h2 class="text-primary">Add</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="IsCompleted"></label>
+            <input asp-for="IsCompleted" class="form-control" style="width:20px" type="checkbox" />
+            <span asp-validation-for="IsCompleted" class="text-danger"></span>
+        </div>
+        <input type="hidden" name="UserName" value="@User.Identity.Name" />
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <a asp-action="Index" asp-controller="Todo" class="btn btn-secondary">
+            Back to Items
+        </a>
+    </div>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"></partial>
+}
+
